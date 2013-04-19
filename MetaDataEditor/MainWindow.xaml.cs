@@ -132,10 +132,9 @@ namespace MetaDataEditor
             foreach (object item in this.episodeListDataGrid.Items)
             {
                 FileMetaDataInfo infoItem = item as FileMetaDataInfo;
-                if (!string.IsNullOrEmpty(infoItem.LocalFileName) && infoItem.UpdateFile && false)
+                if (!string.IsNullOrEmpty(infoItem.LocalFileName) && infoItem.UpdateFile)
                 {
                     MP4File currentFile = MP4File.Open(infoItem.LocalFileName);
-                    currentFile.Load();
                     currentFile.Tags.Album = this.albumTextBox.Text;
                     currentFile.Tags.AlbumArtist = this.showTextBox.Text;
                     currentFile.Tags.Artist = this.showTextBox.Text;
