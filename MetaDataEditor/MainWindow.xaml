@@ -1,0 +1,45 @@
+﻿<Window x:Class="MetaDataEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="500" Width="522">
+    <Grid>
+        <Canvas Height="348" HorizontalAlignment="Left" Margin="22,101,0,0" Name="resultsCanvas" VerticalAlignment="Top" Width="461" Visibility="Visible">
+            <Image Height="150" Name="artworkImage" Stretch="Uniform" Width="150" Canvas.Left="19" Canvas.Top="40" />
+            <TextBox Height="23" Name="showTextBox" Width="266" Canvas.Left="181" Canvas.Top="39" />
+            <Label Content="Artist/Album Artist/Show:" Name="showLabel" Canvas.Left="175" Canvas.Top="13" />
+            <TextBox Height="23" Name="albumTextBox" Width="266" Canvas.Left="181" Canvas.Top="94" />
+            <Label Content="Album:" Name="albumLabel" Canvas.Left="176" Canvas.Top="62" />
+            <TextBox Height="23" Name="seasonNumberTextBox" Width="82" Canvas.Left="181" Canvas.Top="149" />
+            <Label Content="Season Number:" Name="seasonNumberLabel" Canvas.Left="175" Canvas.Top="117" />
+            <Label Content="Artwork:" Height="28" Name="artworkLabel" Canvas.Left="14" Canvas.Top="13" />
+            <DataGrid AutoGenerateColumns="False" Canvas.Left="19" Canvas.Top="209" Height="133" Name="episodeListDataGrid" Width="428">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Metadata.TrackNumber}" Header="#" />
+                    <DataGridTextColumn Binding="{Binding Metadata.TrackName}" Header="Title" />
+                    <DataGridTextColumn Binding="{Binding LocalFileName}" Header="File" />
+                    <DataGridCheckBoxColumn Binding="{Binding UpdateFile}" Header="Update" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Select Folder" Height="23" Name="selectFolderButton" Width="82" Click="selectFolderButton_Click" Canvas.Left="181" Canvas.Top="180" />
+            <Button Canvas.Left="372" Canvas.Top="180" Content="Go" Height="23" Name="goButton" Width="75" Click="goButton_Click" />
+        </Canvas>
+        <Canvas Height="348" HorizontalAlignment="Left" Margin="22,101,0,0" Name="seasonListCanvas" VerticalAlignment="Top" Width="466" Visibility="Hidden">
+            <DataGrid AutoGenerateColumns="False" Canvas.Left="10" Canvas.Top="10" DataContext="{Binding}" Height="227" IsReadOnly="True" ItemsSource="{Binding}" Name="seasonsDataGrid" Visibility="Visible" Width="438" MouseDoubleClick="seasonsDataGrid_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding CollectionName}" Header="Seasons Found" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Canvas>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="125,37,0,0" Name="searchTermTextBox" VerticalAlignment="Top" Width="120" />
+        <Label Content="Search Term:" Height="28" HorizontalAlignment="Left" Margin="22,35,0,0" Name="searchTermLabel" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="125,66,0,0" Name="seasonTextBox" VerticalAlignment="Top" Width="120" />
+        <Label Content="Season Number:" Height="28" HorizontalAlignment="Left" Margin="22,64,0,0" Name="seasonLabel" VerticalAlignment="Top" />
+        <Button Content="Search" Height="23" HorizontalAlignment="Left" Margin="373,41,0,0" Name="searchButton" VerticalAlignment="Top" Width="75" Click="searchButton_Click" />
+        <GroupBox Header="Search Type" Height="73" HorizontalAlignment="Left" Margin="251,22,0,0" Name="searchTypeGroupBox" VerticalAlignment="Top" Width="103" DataContext="{Binding ElementName=searchTypeGroupBox}">
+            <Grid>
+                <RadioButton Content="TV Seasons" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="tvSeasonsRadioButton" VerticalAlignment="Top" GroupName="SearchType" IsChecked="True" />
+                <RadioButton Content="Movies" Height="16" HorizontalAlignment="Left" Margin="6,28,0,0" Name="moviesRadioButton" VerticalAlignment="Top" GroupName="SearchType" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
