@@ -4,101 +4,6 @@
         <name>Knuckleball</name>
     </assembly>
     <members>
-        <member name="T:Knuckleball.IntPtrExtensions">
-            <summary>
-            The <see cref="T:Knuckleball.IntPtrExtensions"/> class contains extension methods used
-            for marshaling data between managed and unmanaged code.
-            </summary>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadInt(System.IntPtr)">
-            <summary>
-            Reads a 32-bit integer value beginning at the location pointed to 
-            in memory by the specified pointer value.
-            </summary>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <returns>The 32-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
-            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadLong(System.IntPtr)">
-            <summary>
-            Reads a 64-bit integer value beginning at the location pointed to 
-            in memory by the specified pointer value.
-            </summary>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <returns>The 64-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
-            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadShort(System.IntPtr)">
-            <summary>
-            Reads a 16-bit integer value beginning at the location pointed to 
-            in memory by the specified pointer value.
-            </summary>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <returns>The 16-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
-            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadByte(System.IntPtr)">
-            <summary>
-            Reads an 8-bit integer value beginning at the location pointed to 
-            in memory by the specified pointer value.
-            </summary>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <returns>The 8-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
-            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadBoolean(System.IntPtr)">
-            <summary>
-            Reads an 8-bit integer value beginning at the location pointed to 
-            in memory by the specified pointer value, and coerces that value into
-            a boolean.
-            </summary>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <returns><see langword="true"/> if the value pointed to by this <see cref="T:System.IntPtr"/>
-            is non-zero; <see langword="false"/> if the value pointed to is zero.
-            Returns <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadEnumValue``1(System.IntPtr,``0)">
-            <summary>
-            Reads an enumerated value beginning at the location pointed to in
-            memory by the specified pointer value.
-            </summary>
-            <typeparam name="T">A value derived from <see cref="T:System.Enum"/>.</typeparam>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <param name="defaultValue">The default value of the enumerated value to return
-            if the memory location pointed to by this <see cref="T:System.IntPtr"/> is a null pointer
-            (<see cref="F:System.IntPtr.Zero"/>).</param>
-            <returns>The enumerated value pointed to by this <see cref="T:System.IntPtr"/>. Returns
-            the specified default value if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadStructure``1(System.IntPtr)">
-            <summary>
-            Reads a structure beginning at the location pointed to in memory by the 
-            specified pointer value.
-            </summary>
-            <typeparam name="T">The type of the structure to read.</typeparam>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <returns>An instance of the specified structure type.</returns>
-            <exception cref="T:System.ArgumentNullException">Thrown when this <see cref="T:System.IntPtr"/>
-            is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</exception>
-        </member>
-        <member name="M:Knuckleball.IntPtrExtensions.ReadBuffer(System.IntPtr,System.Int32)">
-            <summary>
-            Reads a block of memory beginning at the location pointed to by the specified
-            pointer value, and copies the contents into a byte array of the specified length.
-            </summary>
-            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
-            in memory at which to begin reading data.</param>
-            <param name="bufferLength">The number of bytes to read into the byte array.</param>
-            <returns>The byte array containing copies of the values pointed to by this <see cref="T:System.IntPtr"/>. Returns
-            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
-        </member>
         <member name="T:Knuckleball.MP4File">
             <summary>
             Represents an instance of an MP4 file.
@@ -143,66 +48,6 @@
         <member name="P:Knuckleball.MP4File.Tags">
             <summary>
             Gets the metadata tags for this file.
-            </summary>
-        </member>
-        <member name="T:Knuckleball.MediaKind">
-            <summary>
-            Indicates the kind of media contained in this file.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.NotSet">
-            <summary>
-            Indicates the media type is not set in this file.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Unknown">
-            <summary>
-            Indicates the media type is unknown.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Music">
-            <summary>
-            Indicates the media type is a music file.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Audiobook">
-            <summary>
-            Indicates the media type is an audiobook.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.MusicVideo">
-            <summary>
-            Indicates the media type is a music video.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Movie">
-            <summary>
-            Indicates the media type is a movie.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.TVShow">
-            <summary>
-            Indicates the media type is an episode of a TV show.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Booklet">
-            <summary>
-            Indicates the media type is a digital booklet.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Ringtone">
-            <summary>
-            Indicates the media type is a ringtone.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.Podcast">
-            <summary>
-            Indicates the media type is an episode of a podcast.
-            </summary>
-        </member>
-        <member name="F:Knuckleball.MediaKind.iTunesU">
-            <summary>
-            Indicates the media type is an iTunesU file.
             </summary>
         </member>
         <member name="T:Knuckleball.MovieInfo">
@@ -405,6 +250,66 @@
             Gets the name of the atom.
             </summary>
         </member>
+        <member name="T:Knuckleball.MediaKind">
+            <summary>
+            Indicates the kind of media contained in this file.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.NotSet">
+            <summary>
+            Indicates the media type is not set in this file.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Unknown">
+            <summary>
+            Indicates the media type is unknown.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Music">
+            <summary>
+            Indicates the media type is a music file.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Audiobook">
+            <summary>
+            Indicates the media type is an audiobook.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.MusicVideo">
+            <summary>
+            Indicates the media type is a music video.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Movie">
+            <summary>
+            Indicates the media type is a movie.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.TVShow">
+            <summary>
+            Indicates the media type is an episode of a TV show.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Booklet">
+            <summary>
+            Indicates the media type is a digital booklet.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Ringtone">
+            <summary>
+            Indicates the media type is a ringtone.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.Podcast">
+            <summary>
+            Indicates the media type is an episode of a podcast.
+            </summary>
+        </member>
+        <member name="F:Knuckleball.MediaKind.iTunesU">
+            <summary>
+            Indicates the media type is an iTunesU file.
+            </summary>
+        </member>
         <member name="T:Knuckleball.ContentRating">
             <summary>
             Specifies the value for the content rating of an MP4 file.
@@ -428,6 +333,335 @@
         <member name="F:Knuckleball.ContentRating.Explicit">
             <summary>
             Indicates a value of "explicit" has been set for the content of this file.
+            </summary>
+        </member>
+        <member name="T:Knuckleball.MetadataTags">
+            <summary>
+            Represents the metadata tags of an MP4 file.
+            </summary>
+        </member>
+        <member name="M:Knuckleball.MetadataTags.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Knuckleball.MetadataTags"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Knuckleball.MetadataTags.Dispose">
+            <summary>
+            Releases all managed and unmanaged resources referenced by this instance.
+            </summary>
+        </member>
+        <member name="M:Knuckleball.MetadataTags.ReadFromFile(System.IntPtr)">
+            <summary>
+            Reads the tags from the specified file.
+            </summary>
+            <param name="fileHandle">The handle to the file from which to read the tags.</param>
+            <returns>A new instance of a <see cref="T:Knuckleball.MetadataTags"/> object containing the values
+            in the metadata tags for the file.</returns>
+        </member>
+        <member name="M:Knuckleball.MetadataTags.WriteToFile(System.IntPtr)">
+            <summary>
+            Writes the tags to the specified file.
+            </summary>
+            <param name="fileHandle">The handle to the file to which to write the tags.</param>
+        </member>
+        <member name="M:Knuckleball.MetadataTags.Dispose(System.Boolean)">
+            <summary>
+            Releases all managed and unmanaged resources referenced by this instance.
+            </summary>
+            <param name="disposing"><see langword="true"/> to dispose of managed and unmanaged resources;
+            <see langword="false"/> to dispose of only unmanaged resources.</param>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Title">
+            <summary>
+            Gets or sets the title of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Artist">
+            <summary>
+            Gets or sets the artist of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.AlbumArtist">
+            <summary>
+            Gets or sets the album artist of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Album">
+            <summary>
+            Gets or sets the album of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Grouping">
+            <summary>
+            Gets or sets the grouping of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Composer">
+            <summary>
+            Gets or sets the composer of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Comment">
+            <summary>
+            Gets or sets the comments of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Genre">
+            <summary>
+            Gets or sets the genre of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.GenreType">
+            <summary>
+            Gets or sets the genre type of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ReleaseDate">
+            <summary>
+            Gets or sets the release date of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.TrackNumber">
+            <summary>
+            Gets or sets the track number of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.TotalTracks">
+            <summary>
+            Gets or sets the total number of tracks of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.DiscNumber">
+            <summary>
+            Gets or sets the disc number of tracks of the content contained in this file.
+            /// May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.TotalDiscs">
+            <summary>
+            Gets or sets the total number of discs of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Tempo">
+            <summary>
+            Gets or sets the tempo of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.IsCompilation">
+            <summary>
+            Gets or sets a value indicating whether the content contained in this file is part of a compilation.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.TVShow">
+            <summary>
+            Gets or sets the name of the TV show for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.TVNetwork">
+            <summary>
+            Gets or sets the name of the TV network for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.EpisodeId">
+            <summary>
+            Gets or sets the episode ID of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SeasonNumber">
+            <summary>
+            Gets or sets the season number of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.EpisodeNumber">
+            <summary>
+            Gets or sets the episode number of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Description">
+            <summary>
+            Gets or sets the description of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.LongDescription">
+            <summary>
+            Gets or sets the long description of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Lyrics">
+            <summary>
+            Gets or sets the lyrics of the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SortName">
+            <summary>
+            Gets or sets the sort name for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SortArtist">
+            <summary>
+            Gets or sets the sort artist for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SortAlbumArtist">
+            <summary>
+            Gets or sets the sort album artist for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SortAlbum">
+            <summary>
+            Gets or sets the sort album for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SortComposer">
+            <summary>
+            Gets or sets the sort composer for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.SortTVShow">
+            <summary>
+            Gets or sets the sort TV show name for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ArtworkCount">
+            <summary>
+            Gets the count of the artwork contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ArtworkFormat">
+            <summary>
+            Gets the format of the artwork contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Copyright">
+            <summary>
+            Gets or sets the copyright information for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.EncodingTool">
+            <summary>
+            Gets or sets the name of the encoding tool used for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.EncodedBy">
+            <summary>
+            Gets or sets the name of the person who encoded the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.PurchasedDate">
+            <summary>
+            Gets or sets the date this file was purchased from a media store.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.IsPodcast">
+            <summary>
+            Gets or sets a value indicating whether the content contained in this file is part of a podcast.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Keywords">
+            <summary>
+            Gets or sets the podcast keywords for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Category">
+            <summary>
+            Gets or sets the podcast category for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.IsHDVideo">
+            <summary>
+            Gets or sets a value indicating whether the content contained in this file is high-definition video.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.MediaType">
+            <summary>
+            Gets or sets the type of media for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ContentRating">
+            <summary>
+            Gets or sets the content rating for the content contained in this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.IsGapless">
+            <summary>
+            Gets or sets a value indicating whether the content contained in this file is part of a gapless playback album.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.MediaStoreAccount">
+            <summary>
+            Gets or sets the account used to purchase this file from a media store, such as iTunes.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.MediaStoreAccountType">
+            <summary>
+            Gets or sets the type of account used to purchase this file from a media store, such as iTunes.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.MediaStoreCountry">
+            <summary>
+            Gets or sets the country where this file was purchased from a media store, such as iTunes.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ContentId">
+            <summary>
+            Gets or sets the media store ID of the of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ArtistId">
+            <summary>
+            Gets or sets the media store ID of the of the artist of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.PlaylistId">
+            <summary>
+            Gets or sets the playlist ID of this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.GenreId">
+            <summary>
+            Gets or sets the ID of the of the genre of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.ComposerId">
+            <summary>
+            Gets or sets the media store ID of the of the composer of the content contained in this file.
+            May be <see langword="null"/> if the value is not set in the file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Xid">
+            <summary>
+            Gets or sets the X ID of this file.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.RatingInfo">
+            <summary>
+            Gets or sets the ratings information for the content contained in this file, including source
+            of the rating and the rating value.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.MovieInfo">
+            <summary>
+            Gets or sets the movie information for the content contained in this file, including cast,
+            directors, producers, and writers.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.MetadataTags.Artwork">
+            <summary>
+            Gets or sets the <see cref="T:System.Drawing.Image"/> used for the artwork in this file.
             </summary>
         </member>
         <member name="T:Knuckleball.NativeMethods">
@@ -1330,82 +1564,6 @@
             Auxiliary ID of the file.
             </summary>
         </member>
-        <member name="T:Knuckleball.RatingInfo">
-            <summary>
-            The <see cref="T:Knuckleball.RatingInfo"/> class is represents all of the information contained
-            in the "iTunEXTC" atom. This information includes information about the parental
-            advisory ratings of the content.
-            </summary>
-        </member>
-        <member name="M:Knuckleball.RatingInfo.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Knuckleball.RatingInfo"/> class.
-            </summary>
-        </member>
-        <member name="M:Knuckleball.RatingInfo.ToString">
-            <summary>
-            Returns the string representation of the rating.
-            </summary>
-            <returns>The string representation of the rating.</returns>
-        </member>
-        <member name="M:Knuckleball.RatingInfo.GetHashCode">
-            <summary>
-            Returns the hash code for this <see cref="T:Knuckleball.RatingInfo"/>.
-            </summary>
-            <returns>A 32-bit signed integer hash code.</returns>
-        </member>
-        <member name="M:Knuckleball.RatingInfo.Equals(System.Object)">
-            <summary>
-            Determines whether two <see cref="T:Knuckleball.RatingInfo"/> objects have the same value.
-            </summary>
-            <param name="obj">Determines whether this instance and a specified object, which
-            must also be a <see cref="T:Knuckleball.RatingInfo"/> object, have the same value.</param>
-            <returns><see langword="true"/> if obj is a <see cref="T:Knuckleball.RatingInfo"/> and its value
-            is the same as this instance; otherwise, <see langword="false"/>.</returns>
-        </member>
-        <member name="M:Knuckleball.RatingInfo.Populate(System.Byte[])">
-            <summary>
-            Populates this <see cref="T:Knuckleball.RatingInfo"/> with the specific data stored in it in the referenced file.
-            </summary>
-            <param name="dataBuffer">A byte array containing the iTunes Metadata Format data
-            used to populate this <see cref="T:Knuckleball.RatingInfo"/>.</param>
-        </member>
-        <member name="M:Knuckleball.RatingInfo.ToByteArray">
-            <summary>
-            Returns the data to be stored in this <see cref="T:Knuckleball.RatingInfo"/> as a byte array.
-            </summary>
-            <returns>The byte array containing the data to be stored in the atom.</returns>
-        </member>
-        <member name="P:Knuckleball.RatingInfo.Rating">
-            <summary>
-            Gets or sets the string that represents the rating (e.g., 'PG').
-            </summary>
-        </member>
-        <member name="P:Knuckleball.RatingInfo.RatingSource">
-            <summary>
-            Gets or sets the string that represents the source for the rating (e.g., 'mpaa').
-            </summary>
-        </member>
-        <member name="P:Knuckleball.RatingInfo.SortValue">
-            <summary>
-            Gets or sets the sort value for the rating.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.RatingInfo.RatingAnnotation">
-            <summary>
-            Gets or sets the rating annotation.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.RatingInfo.Meaning">
-            <summary>
-            Gets the meaning of the atom.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.RatingInfo.Name">
-            <summary>
-            Gets the name of the atom.
-            </summary>
-        </member>
         <member name="T:Knuckleball.Country">
             <summary>
             Specifies the country from which the file was purchased in the iTunes Store.
@@ -1578,6 +1736,177 @@
             Gets the internal ID of this Chapter.
             </summary>
         </member>
+        <member name="T:Knuckleball.RatingInfo">
+            <summary>
+            The <see cref="T:Knuckleball.RatingInfo"/> class is represents all of the information contained
+            in the "iTunEXTC" atom. This information includes information about the parental
+            advisory ratings of the content.
+            </summary>
+        </member>
+        <member name="M:Knuckleball.RatingInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Knuckleball.RatingInfo"/> class.
+            </summary>
+        </member>
+        <member name="M:Knuckleball.RatingInfo.ToString">
+            <summary>
+            Returns the string representation of the rating.
+            </summary>
+            <returns>The string representation of the rating.</returns>
+        </member>
+        <member name="M:Knuckleball.RatingInfo.GetHashCode">
+            <summary>
+            Returns the hash code for this <see cref="T:Knuckleball.RatingInfo"/>.
+            </summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+        <member name="M:Knuckleball.RatingInfo.Equals(System.Object)">
+            <summary>
+            Determines whether two <see cref="T:Knuckleball.RatingInfo"/> objects have the same value.
+            </summary>
+            <param name="obj">Determines whether this instance and a specified object, which
+            must also be a <see cref="T:Knuckleball.RatingInfo"/> object, have the same value.</param>
+            <returns><see langword="true"/> if obj is a <see cref="T:Knuckleball.RatingInfo"/> and its value
+            is the same as this instance; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Knuckleball.RatingInfo.Populate(System.Byte[])">
+            <summary>
+            Populates this <see cref="T:Knuckleball.RatingInfo"/> with the specific data stored in it in the referenced file.
+            </summary>
+            <param name="dataBuffer">A byte array containing the iTunes Metadata Format data
+            used to populate this <see cref="T:Knuckleball.RatingInfo"/>.</param>
+        </member>
+        <member name="M:Knuckleball.RatingInfo.ToByteArray">
+            <summary>
+            Returns the data to be stored in this <see cref="T:Knuckleball.RatingInfo"/> as a byte array.
+            </summary>
+            <returns>The byte array containing the data to be stored in the atom.</returns>
+        </member>
+        <member name="P:Knuckleball.RatingInfo.Rating">
+            <summary>
+            Gets or sets the string that represents the rating (e.g., 'PG').
+            </summary>
+        </member>
+        <member name="P:Knuckleball.RatingInfo.RatingSource">
+            <summary>
+            Gets or sets the string that represents the source for the rating (e.g., 'mpaa').
+            </summary>
+        </member>
+        <member name="P:Knuckleball.RatingInfo.SortValue">
+            <summary>
+            Gets or sets the sort value for the rating.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.RatingInfo.RatingAnnotation">
+            <summary>
+            Gets or sets the rating annotation.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.RatingInfo.Meaning">
+            <summary>
+            Gets the meaning of the atom.
+            </summary>
+        </member>
+        <member name="P:Knuckleball.RatingInfo.Name">
+            <summary>
+            Gets the name of the atom.
+            </summary>
+        </member>
+        <member name="T:Knuckleball.IntPtrExtensions">
+            <summary>
+            The <see cref="T:Knuckleball.IntPtrExtensions"/> class contains extension methods used
+            for marshaling data between managed and unmanaged code.
+            </summary>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadInt(System.IntPtr)">
+            <summary>
+            Reads a 32-bit integer value beginning at the location pointed to 
+            in memory by the specified pointer value.
+            </summary>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <returns>The 32-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
+            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadLong(System.IntPtr)">
+            <summary>
+            Reads a 64-bit integer value beginning at the location pointed to 
+            in memory by the specified pointer value.
+            </summary>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <returns>The 64-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
+            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadShort(System.IntPtr)">
+            <summary>
+            Reads a 16-bit integer value beginning at the location pointed to 
+            in memory by the specified pointer value.
+            </summary>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <returns>The 16-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
+            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadByte(System.IntPtr)">
+            <summary>
+            Reads an 8-bit integer value beginning at the location pointed to 
+            in memory by the specified pointer value.
+            </summary>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <returns>The 8-bit integer value pointed to by this <see cref="T:System.IntPtr"/>. Returns
+            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadBoolean(System.IntPtr)">
+            <summary>
+            Reads an 8-bit integer value beginning at the location pointed to 
+            in memory by the specified pointer value, and coerces that value into
+            a boolean.
+            </summary>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <returns><see langword="true"/> if the value pointed to by this <see cref="T:System.IntPtr"/>
+            is non-zero; <see langword="false"/> if the value pointed to is zero.
+            Returns <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadEnumValue``1(System.IntPtr,``0)">
+            <summary>
+            Reads an enumerated value beginning at the location pointed to in
+            memory by the specified pointer value.
+            </summary>
+            <typeparam name="T">A value derived from <see cref="T:System.Enum"/>.</typeparam>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <param name="defaultValue">The default value of the enumerated value to return
+            if the memory location pointed to by this <see cref="T:System.IntPtr"/> is a null pointer
+            (<see cref="F:System.IntPtr.Zero"/>).</param>
+            <returns>The enumerated value pointed to by this <see cref="T:System.IntPtr"/>. Returns
+            the specified default value if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadStructure``1(System.IntPtr)">
+            <summary>
+            Reads a structure beginning at the location pointed to in memory by the 
+            specified pointer value.
+            </summary>
+            <typeparam name="T">The type of the structure to read.</typeparam>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <returns>An instance of the specified structure type.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when this <see cref="T:System.IntPtr"/>
+            is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</exception>
+        </member>
+        <member name="M:Knuckleball.IntPtrExtensions.ReadBuffer(System.IntPtr,System.Int32)">
+            <summary>
+            Reads a block of memory beginning at the location pointed to by the specified
+            pointer value, and copies the contents into a byte array of the specified length.
+            </summary>
+            <param name="value">The <see cref="T:System.IntPtr"/> value indicating the location
+            in memory at which to begin reading data.</param>
+            <param name="bufferLength">The number of bytes to read into the byte array.</param>
+            <returns>The byte array containing copies of the values pointed to by this <see cref="T:System.IntPtr"/>. Returns
+            <see langword="null"/> if this pointer is a null pointer (<see cref="F:System.IntPtr.Zero"/>).</returns>
+        </member>
         <member name="T:Knuckleball.MediaStoreAccountKind">
             <summary>
             Indicates the type of iTunes Music Store account with which this file was purchased.
@@ -1654,335 +1983,6 @@
             the MP4Tags structure.</param>
             <param name="value">The 8-bit integer value with which to call the MP4V2 API.</param>
             <param name="mp4ApiFunction">The MP4V2 API method to call with the pointer to the 8-bit integer value.</param>
-        </member>
-        <member name="T:Knuckleball.MetadataTags">
-            <summary>
-            Represents the metadata tags of an MP4 file.
-            </summary>
-        </member>
-        <member name="M:Knuckleball.MetadataTags.#ctor">
-            <summary>
-            Prevents a default instance of the <see cref="T:Knuckleball.MetadataTags"/> class from being created.
-            </summary>
-        </member>
-        <member name="M:Knuckleball.MetadataTags.Dispose">
-            <summary>
-            Releases all managed and unmanaged resources referenced by this instance.
-            </summary>
-        </member>
-        <member name="M:Knuckleball.MetadataTags.ReadFromFile(System.IntPtr)">
-            <summary>
-            Reads the tags from the specified file.
-            </summary>
-            <param name="fileHandle">The handle to the file from which to read the tags.</param>
-            <returns>A new instance of a <see cref="T:Knuckleball.MetadataTags"/> object containing the values
-            in the metadata tags for the file.</returns>
-        </member>
-        <member name="M:Knuckleball.MetadataTags.WriteToFile(System.IntPtr)">
-            <summary>
-            Writes the tags to the specified file.
-            </summary>
-            <param name="fileHandle">The handle to the file to which to write the tags.</param>
-        </member>
-        <member name="M:Knuckleball.MetadataTags.Dispose(System.Boolean)">
-            <summary>
-            Releases all managed and unmanaged resources referenced by this instance.
-            </summary>
-            <param name="disposing"><see langword="true"/> to dispose of managed and unmanaged resources;
-            <see langword="false"/> to dispose of only unmanaged resources.</param>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Title">
-            <summary>
-            Gets or sets the title of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Artist">
-            <summary>
-            Gets or sets the artist of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.AlbumArtist">
-            <summary>
-            Gets or sets the album artist of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Album">
-            <summary>
-            Gets or sets the album of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Grouping">
-            <summary>
-            Gets or sets the grouping of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Composer">
-            <summary>
-            Gets or sets the composer of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Comment">
-            <summary>
-            Gets or sets the comments of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Genre">
-            <summary>
-            Gets or sets the genre of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.GenreType">
-            <summary>
-            Gets or sets the genre type of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ReleaseDate">
-            <summary>
-            Gets or sets the release date of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.TrackNumber">
-            <summary>
-            Gets or sets the track number of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.TotalTracks">
-            <summary>
-            Gets or sets the total number of tracks of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.DiscNumber">
-            <summary>
-            Gets or sets the disc number of tracks of the content contained in this file.
-            /// May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.TotalDiscs">
-            <summary>
-            Gets or sets the total number of discs of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Tempo">
-            <summary>
-            Gets or sets the tempo of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.IsCompilation">
-            <summary>
-            Gets or sets a value indicating whether the content contained in this file is part of a compilation.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.TVShow">
-            <summary>
-            Gets or sets the name of the TV show for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.TVNetwork">
-            <summary>
-            Gets or sets the name of the TV network for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.EpisodeId">
-            <summary>
-            Gets or sets the episode ID of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SeasonNumber">
-            <summary>
-            Gets or sets the season number of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.EpisodeNumber">
-            <summary>
-            Gets or sets the episode number of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Description">
-            <summary>
-            Gets or sets the description of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.LongDescription">
-            <summary>
-            Gets or sets the long description of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Lyrics">
-            <summary>
-            Gets or sets the lyrics of the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SortName">
-            <summary>
-            Gets or sets the sort name for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SortArtist">
-            <summary>
-            Gets or sets the sort artist for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SortAlbumArtist">
-            <summary>
-            Gets or sets the sort album artist for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SortAlbum">
-            <summary>
-            Gets or sets the sort album for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SortComposer">
-            <summary>
-            Gets or sets the sort composer for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.SortTVShow">
-            <summary>
-            Gets or sets the sort TV show name for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ArtworkCount">
-            <summary>
-            Gets the count of the artwork contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ArtworkFormat">
-            <summary>
-            Gets the format of the artwork contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Copyright">
-            <summary>
-            Gets or sets the copyright information for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.EncodingTool">
-            <summary>
-            Gets or sets the name of the encoding tool used for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.EncodedBy">
-            <summary>
-            Gets or sets the name of the person who encoded the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.PurchasedDate">
-            <summary>
-            Gets or sets the date this file was purchased from a media store.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.IsPodcast">
-            <summary>
-            Gets or sets a value indicating whether the content contained in this file is part of a podcast.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Keywords">
-            <summary>
-            Gets or sets the podcast keywords for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Category">
-            <summary>
-            Gets or sets the podcast category for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.IsHDVideo">
-            <summary>
-            Gets or sets a value indicating whether the content contained in this file is high-definition video.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.MediaType">
-            <summary>
-            Gets or sets the type of media for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ContentRating">
-            <summary>
-            Gets or sets the content rating for the content contained in this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.IsGapless">
-            <summary>
-            Gets or sets a value indicating whether the content contained in this file is part of a gapless playback album.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.MediaStoreAccount">
-            <summary>
-            Gets or sets the account used to purchase this file from a media store, such as iTunes.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.MediaStoreAccountType">
-            <summary>
-            Gets or sets the type of account used to purchase this file from a media store, such as iTunes.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.MediaStoreCountry">
-            <summary>
-            Gets or sets the country where this file was purchased from a media store, such as iTunes.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ContentId">
-            <summary>
-            Gets or sets the media store ID of the of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ArtistId">
-            <summary>
-            Gets or sets the media store ID of the of the artist of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.PlaylistId">
-            <summary>
-            Gets or sets the playlist ID of this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.GenreId">
-            <summary>
-            Gets or sets the ID of the of the genre of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.ComposerId">
-            <summary>
-            Gets or sets the media store ID of the of the composer of the content contained in this file.
-            May be <see langword="null"/> if the value is not set in the file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Xid">
-            <summary>
-            Gets or sets the X ID of this file.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.RatingInfo">
-            <summary>
-            Gets or sets the ratings information for the content contained in this file, including source
-            of the rating and the rating value.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.MovieInfo">
-            <summary>
-            Gets or sets the movie information for the content contained in this file, including cast,
-            directors, producers, and writers.
-            </summary>
-        </member>
-        <member name="P:Knuckleball.MetadataTags.Artwork">
-            <summary>
-            Gets or sets the <see cref="T:System.Drawing.Image"/> used for the artwork in this file.
-            </summary>
         </member>
         <member name="T:Knuckleball.ChapterList">
             <summary>
