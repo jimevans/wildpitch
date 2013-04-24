@@ -106,7 +106,7 @@ namespace MetaDataEditor
                 string[] files = Directory.GetFiles(directory);
                 foreach (string file in files)
                 {
-                    string fileName = System.IO.Path.GetFileName(file);
+                    string fileName = System.IO.Path.GetFileNameWithoutExtension(file);
                     Match match = fileNameRegex.Match(fileName);
                     if (match.Success)
                     {
