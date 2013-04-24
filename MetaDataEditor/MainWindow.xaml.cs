@@ -33,33 +33,41 @@ namespace MetaDataEditor
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            string searchTerm = searchTermTextBox.Text;
-            int seasonNumber = 0;
-            if (!string.IsNullOrEmpty(seasonTextBox.Text))
+            this.Cursor = Cursors.Wait;
+            try
             {
-                seasonNumber = int.Parse(seasonTextBox.Text);
-            }
-
-            if (this.tvSeasonsRadioButton.IsChecked.HasValue && this.tvSeasonsRadioButton.IsChecked.Value)
-            {
-                if (seasonNumber <= 0)
+                string searchTerm = searchTermTextBox.Text;
+                int seasonNumber = 0;
+                if (!string.IsNullOrEmpty(seasonTextBox.Text))
                 {
-                    iTunesTvShowSearchProvider seasonProvider = new iTunesTvShowSearchProvider(searchTerm);
-                    SearchResults seasonList = seasonProvider.Search();
-                    this.seasonsDataGrid.ItemsSource = seasonList.Items;
-                    this.resultsCanvas.Visibility = System.Windows.Visibility.Hidden;
-                    this.seasonListCanvas.Visibility = System.Windows.Visibility.Visible;
+                    seasonNumber = int.Parse(seasonTextBox.Text);
+                }
+
+                if (this.tvSeasonsRadioButton.IsChecked.HasValue && this.tvSeasonsRadioButton.IsChecked.Value)
+                {
+                    if (seasonNumber <= 0)
+                    {
+                        iTunesTvShowSearchProvider seasonProvider = new iTunesTvShowSearchProvider(searchTerm);
+                        SearchResults seasonList = seasonProvider.Search();
+                        this.seasonsDataGrid.ItemsSource = seasonList.Items;
+                        this.resultsCanvas.Visibility = System.Windows.Visibility.Hidden;
+                        this.seasonListCanvas.Visibility = System.Windows.Visibility.Visible;
+                    }
+                    else
+                    {
+                        iTunesTvSeasonSearchProvider provider = new iTunesTvSeasonSearchProvider(searchTerm, seasonNumber);
+                        this.UpdateMetaData(provider);
+                    }
                 }
                 else
                 {
-                    iTunesTvSeasonSearchProvider provider = new iTunesTvSeasonSearchProvider(searchTerm, seasonNumber);
-                    this.UpdateMetaData(provider);
+                    iTunesMovieSearchProvider movieProvider = new iTunesMovieSearchProvider(searchTerm);
+                    SearchResults movieList = movieProvider.Search();
                 }
             }
-            else
+            finally
             {
-                iTunesMovieSearchProvider movieProvider = new iTunesMovieSearchProvider(searchTerm);
-                SearchResults movieList = movieProvider.Search();
+                this.Cursor = null;
             }
         }
 
@@ -85,12 +93,20 @@ namespace MetaDataEditor
 
         private void seasonsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DataGrid grid = sender as DataGrid;
-            if (grid != null && grid.SelectedItems.Count > 0)
+            this.Cursor = Cursors.Wait;
+            try
             {
-                SearchResultItem x = grid.SelectedItems[0] as SearchResultItem;
-                iTunesTvSeasonDetailsSearchProvider provider = new iTunesTvSeasonDetailsSearchProvider(x.CollectionId);
-                this.UpdateMetaData(provider);
+                DataGrid grid = sender as DataGrid;
+                if (grid != null && grid.SelectedItems.Count > 0)
+                {
+                    SearchResultItem x = grid.SelectedItems[0] as SearchResultItem;
+                    iTunesTvSeasonDetailsSearchProvider provider = new iTunesTvSeasonDetailsSearchProvider(x.CollectionId);
+                    this.UpdateMetaData(provider);
+                }
+            }
+            finally
+            {
+                this.Cursor = null;
             }
         }
 
@@ -129,68 +145,76 @@ namespace MetaDataEditor
 
         private void goButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach (object item in this.episodeListDataGrid.Items)
+            this.Cursor = Cursors.Wait;
+            try
             {
-                FileMetaDataInfo infoItem = item as FileMetaDataInfo;
-                if (!string.IsNullOrEmpty(infoItem.LocalFileName) && infoItem.UpdateFile)
+                foreach (object item in this.episodeListDataGrid.Items)
                 {
-                    MP4File currentFile = MP4File.Open(infoItem.LocalFileName);
-                    currentFile.Tags.Album = this.albumTextBox.Text;
-                    currentFile.Tags.AlbumArtist = this.showTextBox.Text;
-                    currentFile.Tags.Artist = this.showTextBox.Text;
-                    currentFile.Tags.TVShow = this.showTextBox.Text;
-                    currentFile.Tags.SeasonNumber = int.Parse(this.seasonNumberTextBox.Text);
-                    currentFile.Tags.EpisodeNumber = infoItem.Metadata.TrackNumber;
-                    currentFile.Tags.Title = infoItem.Metadata.TrackName;
-                    currentFile.Tags.TrackNumber = Convert.ToInt16(infoItem.Metadata.TrackNumber);
-                    currentFile.Tags.TotalTracks = Convert.ToInt16(infoItem.Metadata.TrackCount);
-                    currentFile.Tags.DiscNumber = Convert.ToInt16(infoItem.Metadata.DiscNumber);
-                    currentFile.Tags.TotalDiscs = Convert.ToInt16(infoItem.Metadata.DiscCount);
-                    currentFile.Tags.Description = infoItem.Metadata.ShortDescription;
-                    currentFile.Tags.LongDescription = infoItem.Metadata.LongDescription;
-                    currentFile.Tags.EpisodeId = string.Format("S{0}E{1}", this.seasonNumberTextBox.Text, infoItem.Metadata.TrackNumber);
-
-                    System.Drawing.Image artwork = System.Drawing.Image.FromFile(this.artworkFile);
-                    currentFile.Tags.Artwork = artwork;
-
-                    if (this.albumTextBox.Text.StartsWith("a ", StringComparison.InvariantCultureIgnoreCase) ||
-                        this.albumTextBox.Text.StartsWith("an ", StringComparison.InvariantCultureIgnoreCase) ||
-                        this.albumTextBox.Text.StartsWith("the ", StringComparison.InvariantCultureIgnoreCase))
+                    FileMetaDataInfo infoItem = item as FileMetaDataInfo;
+                    if (!string.IsNullOrEmpty(infoItem.LocalFileName) && infoItem.UpdateFile)
                     {
-                        string sortAlbumValue = this.albumTextBox.Text.Substring(this.albumTextBox.Text.IndexOf(' ') + 1);
-                        currentFile.Tags.SortAlbum = sortAlbumValue;
+                        MP4File currentFile = MP4File.Open(infoItem.LocalFileName);
+                        currentFile.Tags.Album = this.albumTextBox.Text;
+                        currentFile.Tags.AlbumArtist = this.showTextBox.Text;
+                        currentFile.Tags.Artist = this.showTextBox.Text;
+                        currentFile.Tags.TVShow = this.showTextBox.Text;
+                        currentFile.Tags.SeasonNumber = int.Parse(this.seasonNumberTextBox.Text);
+                        currentFile.Tags.EpisodeNumber = infoItem.Metadata.TrackNumber;
+                        currentFile.Tags.Title = infoItem.Metadata.TrackName;
+                        currentFile.Tags.TrackNumber = Convert.ToInt16(infoItem.Metadata.TrackNumber);
+                        currentFile.Tags.TotalTracks = Convert.ToInt16(infoItem.Metadata.TrackCount);
+                        currentFile.Tags.DiscNumber = Convert.ToInt16(infoItem.Metadata.DiscNumber);
+                        currentFile.Tags.TotalDiscs = Convert.ToInt16(infoItem.Metadata.DiscCount);
+                        currentFile.Tags.Description = infoItem.Metadata.ShortDescription;
+                        currentFile.Tags.LongDescription = infoItem.Metadata.LongDescription;
+                        currentFile.Tags.EpisodeId = string.Format("S{0}E{1}", this.seasonNumberTextBox.Text, infoItem.Metadata.TrackNumber);
+
+                        System.Drawing.Image artwork = System.Drawing.Image.FromFile(this.artworkFile);
+                        currentFile.Tags.Artwork = artwork;
+
+                        if (this.albumTextBox.Text.StartsWith("a ", StringComparison.InvariantCultureIgnoreCase) ||
+                            this.albumTextBox.Text.StartsWith("an ", StringComparison.InvariantCultureIgnoreCase) ||
+                            this.albumTextBox.Text.StartsWith("the ", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            string sortAlbumValue = this.albumTextBox.Text.Substring(this.albumTextBox.Text.IndexOf(' ') + 1);
+                            currentFile.Tags.SortAlbum = sortAlbumValue;
+                        }
+
+                        if (this.showTextBox.Text.StartsWith("a ", StringComparison.InvariantCultureIgnoreCase) ||
+                            this.showTextBox.Text.StartsWith("an ", StringComparison.InvariantCultureIgnoreCase) ||
+                            this.showTextBox.Text.StartsWith("the ", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            string sortShowValue = this.showTextBox.Text.Substring(this.showTextBox.Text.IndexOf(' ') + 1);
+                            currentFile.Tags.SortTVShow = sortShowValue;
+                            currentFile.Tags.SortArtist = sortShowValue;
+                            currentFile.Tags.SortAlbumArtist = sortShowValue;
+                        }
+
+
+                        if (infoItem.Metadata.TrackName.StartsWith("a ", StringComparison.InvariantCultureIgnoreCase) ||
+                            infoItem.Metadata.TrackName.StartsWith("an ", StringComparison.InvariantCultureIgnoreCase) ||
+                            infoItem.Metadata.TrackName.StartsWith("the ", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            string sortNameValue = infoItem.Metadata.TrackName.Substring(infoItem.Metadata.TrackName.IndexOf(' ') + 1);
+                            currentFile.Tags.SortName = sortNameValue;
+                        }
+
+                        currentFile.Tags.ContentId = infoItem.Metadata.TrackId;
+                        currentFile.Tags.ReleaseDate = infoItem.Metadata.ReleaseDate.ToString("yyyy-MM-dd");
+                        currentFile.Tags.MediaType = MediaKind.TVShow;
+
+                        currentFile.Save();
+
+                        infoItem.UpdateFile = false;
                     }
-
-                    if (this.showTextBox.Text.StartsWith("a ", StringComparison.InvariantCultureIgnoreCase) ||
-                        this.showTextBox.Text.StartsWith("an ", StringComparison.InvariantCultureIgnoreCase) ||
-                        this.showTextBox.Text.StartsWith("the ", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        string sortShowValue = this.showTextBox.Text.Substring(this.showTextBox.Text.IndexOf(' ') + 1);
-                        currentFile.Tags.SortTVShow = sortShowValue;
-                        currentFile.Tags.SortArtist = sortShowValue;
-                        currentFile.Tags.SortAlbumArtist = sortShowValue;
-                    }
-
-
-                    if (infoItem.Metadata.TrackName.StartsWith("a ", StringComparison.InvariantCultureIgnoreCase) ||
-                        infoItem.Metadata.TrackName.StartsWith("an ", StringComparison.InvariantCultureIgnoreCase) ||
-                        infoItem.Metadata.TrackName.StartsWith("the ", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        string sortNameValue = infoItem.Metadata.TrackName.Substring(infoItem.Metadata.TrackName.IndexOf(' ') + 1);
-                        currentFile.Tags.SortName = sortNameValue;
-                    }
-
-                    currentFile.Tags.ContentId = infoItem.Metadata.TrackId;
-                    currentFile.Tags.ReleaseDate = infoItem.Metadata.ReleaseDate.ToString("yyyy-MM-dd");
-                    currentFile.Tags.MediaType = MediaKind.TVShow;
-
-                    currentFile.Save();
-
-                    infoItem.UpdateFile = false;
                 }
-            }
 
-            this.episodeListDataGrid.Items.Refresh();
+                this.episodeListDataGrid.Items.Refresh();
+            }
+            finally
+            {
+                this.Cursor = null;
+            }
         }
     }
 }
