@@ -14,8 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Knuckleball;
 using MetaDataSearchResults;
+using Ookii.Dialogs.Wpf;
+using Knuckleball;
 
 namespace MetaDataEditor
 {
@@ -112,14 +113,13 @@ namespace MetaDataEditor
 
         private void selectFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
             dialog.ShowDialog();
-            if (!string.IsNullOrEmpty(dialog.FileName))
+            if (!string.IsNullOrEmpty(dialog.SelectedPath))
             {
                 List<string> foundFiles = new List<string>();
                 Regex fileNameRegex = new Regex(@"(\d+)");
-                string directory = System.IO.Path.GetDirectoryName(dialog.FileName);
-                string[] files = Directory.GetFiles(directory);
+                string[] files = Directory.GetFiles(dialog.SelectedPath);
                 foreach (string file in files)
                 {
                     string fileName = System.IO.Path.GetFileNameWithoutExtension(file);
